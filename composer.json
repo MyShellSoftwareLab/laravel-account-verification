@@ -1,0 +1,24 @@
+{
+    "name": "myshell/laravel-account-verification",
+    "description": "Send email to verify if the email is correct",
+    "type": "laravel-package",
+    "authors": [
+        {
+            "name": "GussRw",
+            "email": "gussrw1@gmail.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "MyShell\\AccountVerification\\": "src"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "MyShell\\AccountVerification\\AccountVerificationServiceProvider"
+            ]
+        }
+    }
+}
