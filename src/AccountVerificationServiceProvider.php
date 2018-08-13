@@ -13,7 +13,10 @@ class AccountVerificationServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        $this->loadMigrationsFrom(__DIR__.'/Migrations');
+        $this->loadViewsFrom(__DIR__. '/Views', 'account-verification');
+        $this->loadRoutesFrom(__DIR__. '/Routes/web.php');
+
     }
 
     /**
@@ -23,6 +26,5 @@ class AccountVerificationServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
     }
 }
