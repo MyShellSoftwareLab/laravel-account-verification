@@ -16,7 +16,7 @@ trait AccountVerification
     }
 
     public function getIsVerifiedAttribute(){
-        return $this->unverifiedAccount != null;
+        return $this->unverifiedAccount == null;
     }
 
     public function unverifiedAccount(){
