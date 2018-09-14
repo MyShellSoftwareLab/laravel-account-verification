@@ -20,6 +20,6 @@ trait AccountVerification
     }
 
     public function unverifiedAccount(){
-        return $this->hasOne(UnverifiedAccount::class);
+        return $this->hasOne(UnverifiedAccount::class, 'account_id');
     }
 }
