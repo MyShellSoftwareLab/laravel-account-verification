@@ -42,6 +42,8 @@ class VerificateAccount extends Notification
     {
         $token = route('account.verify', $this->token);
         return (new MailMessage)
+            ->subject(config('account_verification.verification_email_subject','Verificate Account'))
+            ->from(config('account_verification.verification_email_from','example@email.com'))
             ->view(config('account_verification.email_view','account-verification::email_verification'),
                 compact('token'));
     }

@@ -15,11 +15,11 @@ trait AccountVerification
 
     }
 
-    public function getIsVerifiedAttributte(){
-        return $this->unverifiedAccount != null;
+    public function getIsVerifiedAttribute(){
+        return $this->unverifiedAccount == null;
     }
 
     public function unverifiedAccount(){
-        return $this->hasOne(UnverifiedAccount::class);
+        return $this->hasOne(UnverifiedAccount::class, 'account_id');
     }
 }
