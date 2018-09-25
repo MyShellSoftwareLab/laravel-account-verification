@@ -12,12 +12,12 @@ Route::group(['middleware' => ['web']], function () {
             app()->call(config('account_verification.before verification call back '));
         $account = $unverified_account->account;
         $unverified_account->delete();
+        
+        if (config('account_verification.login_after_verification', true))
+            \Illuminate\Support\Facades\Auth::guard('web')->login($account);
 
         if (config('account_verification.after verification call back ', false))
             app()->call(config('account_verification.before verification call back '));
-
-        if (config('account_verification.login_after_verification', true))
-            \Illuminate\Support\Facades\Auth::guard('web')->login($account);
 
         return redirect(config('account_verification.redirect_to', '/'));
     })->name('account.verify');
