@@ -6,7 +6,12 @@ Route::group(['middleware' => ['web']], function () {
         $unverified_account = \MyShell\AccountVerification\Models\UnverifiedAccount::where('token', $token)->with('account')->first();
 
         if ($unverified_account == null)
-            return abort(404);
+        {
+            if(config('account_verification.redirect_to_if_not_exist'))
+                return redirect(config('account_verification.redirect_to_if_not_exist'));
+            else
+                return abort(404);
+        }
 
         if (config('account_verification.before_verification_callback ', false))
             app()->call(config('account_verification.before_verification_callback '));
